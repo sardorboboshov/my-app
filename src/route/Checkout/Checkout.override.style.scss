@@ -1,0 +1,97 @@
+.bar {
+    background: var(--breadcrumbs-background);
+    min-height: var(--breadcrumbs-height);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    &__item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+ 
+      &__index {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width:100%;
+        &__number {
+          top:5px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border-radius: 50%;
+          background-color: var(--primary-base-color);
+          color: white;
+          width: 20px;
+          height: 20px;
+          padding: 0.5rem;
+          padding-top: 0.5rem;
+        }
+      }
+ 
+    }
+    .stepper-wrapper {
+      margin-top: auto;
+      display: flex;
+      justify-content: space-between;
+      margin-top: -2px;
+    }
+    .stepper-item {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex: 1;
+    }
+
+ 
+
+    .stepper-item .step-counter {
+      position: relative;
+      z-index: 5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 23px;
+      height: 23px;
+      border-radius: 50%;
+      background: #ccc;
+      // margin-bottom: 6px;
+    }
+
+
+    .stepper-item.completed .step-counter {
+      background-color: var(--primary-base-color);
+    }
+
+    .stepper-item.completed::after {
+      position: absolute;
+      content: "";
+      border-bottom: 2px solid var(--primary-base-color);
+      width: 100%;
+      top: 20px;
+      left: 50%;
+      z-index: 3;
+    }
+
+    .stepper-item:first-child::before {
+      content: none;
+    }
+    .stepper-item:last-child::after {
+      content: none;
+    }
+    }
+
+.Checkout {
+  @include desktop {
+    margin-top: 0; 
+  }
+  &::before {
+      @include after-mobile { 
+          background: var(--breadcrumbs-background);
+          min-height: var(--breadcrumbs-height);
+          display: none;
+      }
+  }
+}
